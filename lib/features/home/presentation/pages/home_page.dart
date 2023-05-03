@@ -43,13 +43,37 @@ class _HomePageState extends State<HomePage> {
               child: Column(children: [
                 const Spacer(),
                 Center(
-                  child: Text(
-                    context.watch<HomeBloc>().note,
-                    style: TextStyle(
-                        color:  context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green: Colors.red,
-                        fontSize: 60.0,
-                        fontWeight: FontWeight.bold
-                        ),
+                  child:
+                  context.read<HomeBloc>().status =="TuningStatus.undefined"?
+                  const SizedBox(
+                   height: 100,
+                    width: 100, 
+                  ):
+                   Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green:Colors.orange.shade600,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 10,
+                          spreadRadius: 10,
+                          color: context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green:Colors.orange
+                        )
+                      ]
+                    ),
+                    child: Center(
+                      child: Text(
+                        context.watch<HomeBloc>().note,
+                        style: const TextStyle(
+                            color: Colors.white,  
+                            // context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green: Colors.red,
+                            fontSize: 60.0,
+                            fontWeight: FontWeight.bold
+                            ),
+                      ),
+                    ),
                   ),
                 ),
                 const Spacer(),
