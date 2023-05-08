@@ -1,8 +1,12 @@
+import "dart:developer";
+import "dart:ui";
+
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
+import "package:rive/rive.dart" as rv;
 import "package:syncfusion_flutter_gauges/gauges.dart";
-
 import "../bloc/home_bloc.dart";
+import "../bloc/tunings_cubit/tunings_cubit.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List standard = ["E", "A", "D", "G", "B", "E"];
 
   @override
   void initState() {
@@ -24,76 +29,113 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
     BlocProvider.of<HomeBloc>(context).add(const StopRecordingEvent());
     HomeBloc().close();
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        // color: const Color.fromARGB(255, 5, 155, 155),
-        decoration: const BoxDecoration(
-            gradient: RadialGradient(
-                        colors: <Color>[Color.fromRGBO(10, 56, 100, 1), Color.fromRGBO(2, 25, 81, 0.8) ],
-                        // begin: Alignment.topCenter,
-                        // end: Alignment.bottomCenter,
-                        stops: <double>[0.25, 0.75]),),
-        child: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, state) {
-            return Center(
-              child: Column(children: [
-                const Spacer(),
-                Center(
-                  child:
-                  context.read<HomeBloc>().status =="TuningStatus.undefined"?
-                  const SizedBox(
-                   height: 100,
-                    width: 100, 
-                  ):
-                   Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green:Colors.orange.shade600,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 10,
-                          spreadRadius: 10,
-                          color: context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green:Colors.orange
-                        )
-                      ]
-                    ),
-                    child: Center(
-                      child: Text(
-                        context.watch<HomeBloc>().note,
-                        style: const TextStyle(
-                            color: Colors.white,  
-                            // context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green: Colors.red,
-                            fontSize: 60.0,
-                            fontWeight: FontWeight.bold
+      body: Stack(
+        children: [
+          const rv.RiveAnimation.asset(
+            "assets/shapes.riv",
+          ),
+          const rv.RiveAnimation.asset("assets/shapes.riv",
+              alignment: Alignment.center),
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+              child: const SizedBox(),
+            ),
+          ),
+          Container(
+            // color: const Color.fromARGB(255, 5, 155, 155),
+            decoration: const BoxDecoration(
+                gradient: RadialGradient(
+                    colors: <Color>[
+                  Color.fromRGBO(10, 56, 100, 0.5),
+                  Color.fromRGBO(2, 25, 81, 0.6)
+                ],
+                    // begin: Alignment.topCenter,
+                    // end: Alignment.bottomCenter,
+                    stops: <double>[
+                  0.25,
+                  0.75
+                ])),
+            child: BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, state) {
+                return Center(
+                  child: Column(children: [
+                    const Spacer(),
+                    Center(
+                      child: context.read<HomeBloc>().status ==
+                              "TuningStatus.undefined"
+                          ? const SizedBox(
+                              height: 80,
+                              width: 80,
+                            )
+                          : Container(
+                              height: 80,
+                              width: 80,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: context.read<HomeBloc>().status ==
+                                          "TuningStatus.tuned"
+                                      ? Colors.green
+                                      : Colors.red.shade500,
+                                  boxShadow: [
+                                    BoxShadow(
+                                        blurRadius: 10,
+                                        spreadRadius: 20,
+                                        color:
+                                            context.read<HomeBloc>().status ==
+                                                    "TuningStatus.tuned"
+                                                ? Colors.green
+                                                : Colors.red.shade500)
+                                  ]),
+                              child: Center(
+                                child: Text(
+                                  context.watch<HomeBloc>().note,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      // context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green: Colors.red,
+                                      fontSize: 60.0,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
                             ),
-                      ),
                     ),
-                  ),
-                ),
-                const Spacer(),
-                _buildRadialGauge(),
-                const Spacer(),
-                const Center(
-                    child: Text(
+                    const Spacer(),
+                    _buildRadialGauge(),
+                    const Spacer(),
+                    const Center(
+                        child: Text(
                       "",
-                  // context.read<HomeBloc>().status,
-                  style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 60.0,
-                      fontWeight: FontWeight.bold),
-                )),
-                const Spacer(),
-      
-              ]),
-            );
-          },
-        ),
+                      // context.read<HomeBloc>().status,
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 60.0,
+                          fontWeight: FontWeight.bold),
+                    )),
+                    _buildTuningOption(),
+                    const Spacer(),
+                  ]),
+                );
+              },
+            ),
+          ),
+          Positioned(
+            bottom: 700,
+            left: 340,
+            right: 100,
+            top: 10,
+            child: IconButton(
+              onPressed: () {
+                log('message');
+              },
+              icon: const Icon(Icons.menu, size: 30, color: Colors.white),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -132,12 +174,13 @@ class _HomePageState extends State<HomePage> {
                     startValue: 33, endValue: 66,
                     // color:const Color(0xFFFFBA00),
                     label: 'Tuned',
-                    gradient: const SweepGradient(
-                        colors: <Color>[
-                          Color.fromRGBO(81, 163, 211, 1),
-                          Color.fromRGBO(74, 102, 186, 1),
-                         ],
-                        stops: <double>[0.25, 0.75]),
+                    gradient: const SweepGradient(colors: <Color>[
+                      Color.fromRGBO(81, 163, 211, 1),
+                      Color.fromRGBO(74, 102, 186, 1),
+                    ], stops: <double>[
+                      0.25,
+                      0.75
+                    ]),
                     labelStyle: const GaugeTextStyle(
                         fontFamily: 'Roboto',
                         color: Colors.white,
@@ -168,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                   NeedlePointer(
                       value: context.read<HomeBloc>().status ==
                               "TuningStatus.waytoolow"
-                              ? 20
+                          ? 20
                           : context.read<HomeBloc>().status ==
                                   "TuningStatus.toolow"
                               ? 40
@@ -179,8 +222,9 @@ class _HomePageState extends State<HomePage> {
                                           "TuningStatus.toohigh"
                                       ? 60
                                       : context.read<HomeBloc>().status ==
-                                          "TuningStatus.waytoohigh"?
-                                          80:0,
+                                              "TuningStatus.waytoohigh"
+                                          ? 80
+                                          : 0,
                       needleStartWidth: 1,
                       needleEndWidth: 5,
                       needleColor: Colors.white,
@@ -192,6 +236,32 @@ class _HomePageState extends State<HomePage> {
                 ])
           ],
         );
+      },
+    );
+  }
+  
+  _buildTuningOption() {
+    return BlocBuilder<TuningsCubit, TuningsState>(
+      builder: (context, state) {
+        if(state is TuningsLoadingState){
+          return const Text('Loading....');
+        }
+        if(state is TuningsLoadedState){
+
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ...List.generate(
+                state.data.guitar.drop.a.length,
+                (index) => Text(
+                      state.data.guitar.drop.a[index],
+                      style: const TextStyle(
+                          color: Colors.white, fontSize: 25),
+                    ))
+          ],
+        );
+        }
+        return const Text('Error');
       },
     );
   }

@@ -1,0 +1,75 @@
+{
+  "bass": {
+    "standard": "EADG",
+    "fiveString": "BEADG",
+    "sixString": "BEADGC"
+  },
+  "banjo": {
+    "standard": "GDGBD",
+    "C": "GCGBD",
+    "G": "GDGBD",
+    "doubleC": "GCGCD",
+    "sawmill": "GDGBE",
+    "open": {
+      "C": "GCGCE",
+      "D": "F#DF#AD"
+    }
+  },
+  "cello": {
+    "standard": "CGDA"
+  },
+  "guitar": {
+    "standard": "EADGBE",
+    "open": {
+      "A": "EAC#EAE",
+      "B": "BF#BF#BD#",
+      "C": "CGCGCE",
+      "D": "DADF#AD",
+      "F": "CFCFAF",
+      "G": "DGDGBD"
+    },
+    "drop": {
+      "Ab": "AbEbAbDbFBb",
+      "A": "AEADF#B",
+      "A#": "A#DA#D#GC",
+      "Bb": "BbFBbEbGC",
+      "B": "BF#BEG#C#",
+      "C": "CGCFAD",
+      "C#": "C#G#C#F#A#D#",
+      "Db": "DbAbDbGbBbEb",
+      "D": "DADGBE",
+      "D#": "D#A#D#F#CF",
+      "Eb": "EbBbEbAbCF",
+      "E": "EBEAC#F#",
+      "F": "FCFA#DG",
+      "F#": "F#C#F#BD#G#",
+      "Gb": "GbDbGbBEbAb",
+      "G": "GCGCEA",
+      "G#": "G#D#G#C#FA#"
+    },
+    "lute": "EADF#BE",
+    "irish": "DADGAD"
+  },
+  "mandolin": {
+    "standard": "GGDDAAEE"
+  },
+  "viola": {
+    "standard": "CGDA"
+  },
+  "violin": {
+    "standard": "GDAE",
+    "cajun": "FCGD",
+    "sawmill": "GDGD",
+    "open": {
+      "D": "DDAD",
+      "G": "GDGB"
+    }
+  },
+  "ukulele": {
+    "standard": "GCEA",
+    "bass": "EADG",
+    "baritone": "DGBE",
+    "tenor": "GCEA",
+    "soprano": "ADF#B"
+  }
+}

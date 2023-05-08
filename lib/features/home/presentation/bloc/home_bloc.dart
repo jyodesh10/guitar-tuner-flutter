@@ -35,10 +35,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
   }
 
-  Future<void> _startCapture() async {
-  
 
-  }
 
   void listener(dynamic obj) {
     var buffer = Float64List.fromList(obj.cast<double>());
