@@ -10,12 +10,11 @@ abstract class TuningsState extends Equatable {
 class TuningsInitial extends TuningsState {}
 class TuningsLoadedState extends TuningsState {
   final TuningsModel data;
-  final int selectedInstrument;
 
-  const TuningsLoadedState({required this.data,required this.selectedInstrument });
+  const TuningsLoadedState({required this.data });
   
   @override
-  List<Object> get props => [data,selectedInstrument];
+  List<Object> get props => [data];
 
 }
 class TuningsLoadingState extends TuningsState {}

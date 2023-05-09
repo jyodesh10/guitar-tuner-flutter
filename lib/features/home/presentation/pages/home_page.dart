@@ -19,6 +19,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List standard = ["E", "A", "D", "G", "B", "E"];
   var selectedIntrumentIndex  =3;
+  var selectedTuningIndex  =0;
+  String openr ="A#DA#D#GC";
+  List  st =[];
+  List<String> chars = [];
+
 
   @override
   void initState() {
@@ -133,6 +138,7 @@ class _HomePageState extends State<HomePage> {
             child: IconButton(
               onPressed: () {
                 log('message');
+
               },
               icon: const Icon(Icons.menu, size: 30, color: Colors.white),
             ),
@@ -265,12 +271,18 @@ class _HomePageState extends State<HomePage> {
                         (index) => 
                           ListTile(
                             onTap: (){
-                              selectedIntrumentIndex = index;
+                              selectedIntrumentIndex = 3;
+                              selectedTuningIndex = 0;
+                              setState(() {
+                                selectedIntrumentIndex = index;
+                                
+                              });
+                              Navigator.pop(context);
                             },
                             title: Text(
                               state.data.data[index].instrument,
                               style: const TextStyle(
-                                  color: Colors.black, fontSize: 25),
+                                  color: Colors.black, fontSize: 22),
                             ),
                           )
                         )
@@ -283,7 +295,7 @@ class _HomePageState extends State<HomePage> {
                       const Text('Select Instrument',style: TextStyle(
                         color: Colors.white
                       ),),
-                       Text( state.data.data[state.selectedInstrument].instrument[0].toUpperCase()+state.data.data[state.selectedInstrument].instrument.substring(1).toLowerCase(),style: const TextStyle(
+                       Text( state.data.data[selectedIntrumentIndex].instrument[0].toUpperCase()+state.data.data[selectedIntrumentIndex].instrument.substring(1).toLowerCase(),style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                         fontWeight: FontWeight.w300
@@ -305,10 +317,17 @@ class _HomePageState extends State<HomePage> {
                             state.data.data[selectedIntrumentIndex].tunings.length,
                           (index) => 
                             ListTile(
+                              onTap: (){
+                                st = [];
+                                setState(() {
+                                  selectedTuningIndex = index;
+                                });
+                                Navigator.pop(context);
+                              },
                               title: Text(
                                 state.data.data[selectedIntrumentIndex].tunings[index].name,
                                 style: const TextStyle(
-                                    color: Colors.black, fontSize: 25),
+                                    color: Colors.black, fontSize: 22),
                               ),
                             )
                           )
@@ -318,11 +337,11 @@ class _HomePageState extends State<HomePage> {
                   },
                   color: Colors.white.withOpacity(0.3),
                   child: Column(
-                    children: const [
-                      Text('Select Tuning',style: TextStyle(
+                    children:  [
+                      const Text('Select Tuning',style: TextStyle(
                         color: Colors.white
                       ),),
-                      Text('OpenD',style: TextStyle(
+                      Text( state.data.data[selectedIntrumentIndex].tunings[selectedTuningIndex].name,style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                         fontWeight: FontWeight.w300
@@ -334,12 +353,13 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 10,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children:  [
                 ...List.generate(
-                   1,
+                    state.data.data[selectedIntrumentIndex].tunings[selectedTuningIndex].notes.length,
+
                     (index) => Text(
-                          state.data.data[0].instrument,
+                          state.data.data[selectedIntrumentIndex].tunings[selectedTuningIndex].notes[index],
                           style: const TextStyle(
                               color: Colors.white, fontSize: 25),
                         ))

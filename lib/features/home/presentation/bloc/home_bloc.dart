@@ -51,7 +51,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       status = handledPitchResult.tuningStatus.toString();
       log("status:$status");
           emit(RecordingState(note: note, status: status));
-
     }
   }
 

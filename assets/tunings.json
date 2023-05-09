@@ -5,15 +5,15 @@
       "tunings":[
         {
           "name":"standard",
-          "notes":"EADG"
+          "notes":"E A D G"
         },
         {
           "name":"fiveString",
-          "notes":"BEADG"
+          "notes":"B E A D G"
         },
         {
           "name":"sixString",
-          "notes":"BEADGC"
+          "notes":"B E A D G C"
         }
       ]
     },
@@ -22,31 +22,31 @@
       "tunings":[
         {
           "name":"standard",
-          "notes":"GDGBD"
+          "notes":"G D G B D"
         },
         {
           "name":"C",
-          "notes":"GCGBD"
+          "notes":"G C G B D"
         },
         {
           "name":"G",
-          "notes":"GDGBD"
+          "notes":"G D G B D"
         },
         {
           "name":"doubleC",
-          "notes":"GCGCD"
+          "notes":"G C G C D"
         },
         {
           "name":"sawmill",
-          "notes":"GDGBE"
+          "notes":"G D G B E"
         },
         {
           "name":"openC",
-          "notes":"GCGCE"
+          "notes":"G C G C E"
         },
         {
           "name":"openD",
-          "notes":"F#DF#AD"
+          "notes":"F# D F# A D"
         }
       ]
     },
@@ -55,7 +55,7 @@
       "tunings":[
         {
           "name":"standard",
-          "notes":"CGDA"
+          "notes":"C G D A"
         }
       ]
     },
@@ -64,111 +64,111 @@
       "tunings":[
         {
           "name":"standard",
-          "notes":"EADGBE"
+          "notes":"E A D G B E"
         },
         {
           "name":"openA",
-          "notes":"EAC#EAE"
+          "notes":"E A C# E A E"
         },
         {
           "name":"openB",
-          "notes":"BF#BF#BD#"
+          "notes":"B F# B F# B D#"
         },
         {
           "name":"openC",
-          "notes":"CGCGCE"
+          "notes":"C G C G C E"
         },
         {
           "name":"openD",
-          "notes":"DADF#AD"
+          "notes":"D A D F# A D"
         },
         {
           "name":"openE",
-          "notes":"EBEG♯BE"
+          "notes":"E B E G♯ B E"
         },
         {
           "name":"openF",
-          "notes":"CFCFAF"
+          "notes":"C F C F A F"
         },
         {
           "name":"openG",
-          "notes":"DGDGBD"
+          "notes":"D G D G B D"
         },
         {
           "name":"dropAb",
-          "notes":"AbEbAbDbFBb"
+          "notes":"Ab Eb Ab Db F Bb"
         },
         {
           "name":"dropA",
-          "notes":"AEADF#B"
+          "notes":"A E A D F# B"
         },
         {
           "name":"dropA#",
-          "notes":"A#DA#D#GC"
+          "notes":"A# D A# D# G C"
         },
         {
           "name":"dropBb",
-          "notes":"BbFBbEbGC"
+          "notes":"Bb F Bb Eb G C"
         },
         {
           "name":"dropB",
-          "notes":"BF#BEG#C#"
+          "notes":"B F# B E G# C#"
         },
         {
           "name":"dropC",
-          "notes":"CGCFAD"
+          "notes":"C G C F A D"
         },
         {
           "name":"dropC#",
-          "notes":"C#G#C#F#A#D#"
+          "notes":"C# G# C# F# A# D#"
         },
         {
           "name":"dropDb",
-          "notes":"DbAbDbGbBbEb"
+          "notes":"Db Ab Db Gb Bb Eb"
         },
         {
           "name":"dropD",
-          "notes":"DADGBE"
+          "notes":"D A D G B E"
         },
         {
           "name":"dropD#",
-          "notes":"D#A#D#F#CF"
+          "notes":"D# A# D# F# C F"
         },
         {
           "name":"dropEb",
-          "notes":"EbBbEbAbCF"
+          "notes":"Eb Bb Eb Ab C F"
         },
         {
           "name":"dropE",
-          "notes":"EBEAC#F#"
+          "notes":"E B E A C# F#"
         },
         {
           "name":"dropF",
-          "notes":"FCFA#D#GC"
+          "notes":"F C F A# D# G C"
         },
         {
           "name":"dropF#",
-          "notes":"F#C#F#BD#G#"
+          "notes":"F# C# F# B D# G#"
         },
         {
           "name":"dropGb",
-          "notes":"GbDbGbBEbAb"
+          "notes":"Gb Db Gb B Eb Ab"
         },
         {
           "name":"dropG",
-          "notes":"GCGCEA"
+          "notes":"G C G C E A"
         },
         {
           "name":"dropG#",
-          "notes":"G#D#G#C#FA#"
+          "notes":"G# D# G# C# F A#"
         },
         {
           "name":"lute",
-          "notes":"EADF#BE"
+          "notes":"E A D F# B E"
         },
         {
           "name":"irish",
-          "notes":"DADGAD"
+          "notes":"D A D G A D"
         }
 
       ]
@@ -178,7 +178,7 @@
       "tunings": [
         {
           "name": "standard",
-          "notes": "GGDDAAEE"
+          "notes": "G G D D A A E E"
         }
       ]
     },
@@ -187,7 +187,7 @@
       "tunings": [
         {
           "name": "standard",
-          "notes": "CGDA"
+          "notes": "C G D A"
         }
       ]
     },
@@ -196,23 +196,23 @@
       "tunings":[
         {
         "name":"standard",
-        "notes":"GDAE"
+        "notes":"G D A E"
         },
         {
         "name":"cajun",
-        "notes":"FCGD"
+        "notes":"F C G D"
         },
         {
         "name":"sawmill",
-        "notes":"GDGD"
+        "notes":"G D G D"
         },
         {
         "name":"openD",
-        "notes":"DDAD"
+        "notes":"D D A D"
         },
         {
         "name":"openG",
-        "notes":"GDGB"
+        "notes":"G D G B"
         }
       ]
     },
@@ -221,23 +221,23 @@
       "tunings":[
         {
         "name":"standard",
-        "notes":"GCEA"
+        "notes":"G C E A"
         },
         {
         "name":"bass",
-        "notes":"EADG"
+        "notes":"E A D G"
         },
         {
         "name":"baritone",
-        "notes":"DGBE"
+        "notes":"D G B E"
         },
         {
         "name":"tenor",
-        "notes":"GCEA"
+        "notes":"G C E A"
         },
         {
         "name":"soprano",
-        "notes":"ADF#B"
+        "notes":"A D F# B"
         }
       ]
     }
