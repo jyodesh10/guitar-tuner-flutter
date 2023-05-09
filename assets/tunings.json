@@ -1,75 +1,245 @@
 {
-  "bass": {
-    "standard": "EADG",
-    "fiveString": "BEADG",
-    "sixString": "BEADGC"
-  },
-  "banjo": {
-    "standard": "GDGBD",
-    "C": "GCGBD",
-    "G": "GDGBD",
-    "doubleC": "GCGCD",
-    "sawmill": "GDGBE",
-    "open": {
-      "C": "GCGCE",
-      "D": "F#DF#AD"
-    }
-  },
-  "cello": {
-    "standard": "CGDA"
-  },
-  "guitar": {
-    "standard": "EADGBE",
-    "open": {
-      "A": "EAC#EAE",
-      "B": "BF#BF#BD#",
-      "C": "CGCGCE",
-      "D": "DADF#AD",
-      "F": "CFCFAF",
-      "G": "DGDGBD"
+  "data":[
+    {
+      "instrument":"bass",
+      "tunings":[
+        {
+          "name":"standard",
+          "notes":"EADG"
+        },
+        {
+          "name":"fiveString",
+          "notes":"BEADG"
+        },
+        {
+          "name":"sixString",
+          "notes":"BEADGC"
+        }
+      ]
     },
-    "drop": {
-      "Ab": "AbEbAbDbFBb",
-      "A": "AEADF#B",
-      "A#": "A#DA#D#GC",
-      "Bb": "BbFBbEbGC",
-      "B": "BF#BEG#C#",
-      "C": "CGCFAD",
-      "C#": "C#G#C#F#A#D#",
-      "Db": "DbAbDbGbBbEb",
-      "D": "DADGBE",
-      "D#": "D#A#D#F#CF",
-      "Eb": "EbBbEbAbCF",
-      "E": "EBEAC#F#",
-      "F": "FCFA#DG",
-      "F#": "F#C#F#BD#G#",
-      "Gb": "GbDbGbBEbAb",
-      "G": "GCGCEA",
-      "G#": "G#D#G#C#FA#"
+    {
+      "instrument":"banjo",
+      "tunings":[
+        {
+          "name":"standard",
+          "notes":"GDGBD"
+        },
+        {
+          "name":"C",
+          "notes":"GCGBD"
+        },
+        {
+          "name":"G",
+          "notes":"GDGBD"
+        },
+        {
+          "name":"doubleC",
+          "notes":"GCGCD"
+        },
+        {
+          "name":"sawmill",
+          "notes":"GDGBE"
+        },
+        {
+          "name":"openC",
+          "notes":"GCGCE"
+        },
+        {
+          "name":"openD",
+          "notes":"F#DF#AD"
+        }
+      ]
     },
-    "lute": "EADF#BE",
-    "irish": "DADGAD"
-  },
-  "mandolin": {
-    "standard": "GGDDAAEE"
-  },
-  "viola": {
-    "standard": "CGDA"
-  },
-  "violin": {
-    "standard": "GDAE",
-    "cajun": "FCGD",
-    "sawmill": "GDGD",
-    "open": {
-      "D": "DDAD",
-      "G": "GDGB"
+    {
+      "instrument":"cello",
+      "tunings":[
+        {
+          "name":"standard",
+          "notes":"CGDA"
+        }
+      ]
+    },
+    {
+      "instrument":"guitar",
+      "tunings":[
+        {
+          "name":"standard",
+          "notes":"EADGBE"
+        },
+        {
+          "name":"openA",
+          "notes":"EAC#EAE"
+        },
+        {
+          "name":"openB",
+          "notes":"BF#BF#BD#"
+        },
+        {
+          "name":"openC",
+          "notes":"CGCGCE"
+        },
+        {
+          "name":"openD",
+          "notes":"DADF#AD"
+        },
+        {
+          "name":"openE",
+          "notes":"EBEG♯BE"
+        },
+        {
+          "name":"openF",
+          "notes":"CFCFAF"
+        },
+        {
+          "name":"openG",
+          "notes":"DGDGBD"
+        },
+        {
+          "name":"dropAb",
+          "notes":"AbEbAbDbFBb"
+        },
+        {
+          "name":"dropA",
+          "notes":"AEADF#B"
+        },
+        {
+          "name":"dropA#",
+          "notes":"A#DA#D#GC"
+        },
+        {
+          "name":"dropBb",
+          "notes":"BbFBbEbGC"
+        },
+        {
+          "name":"dropB",
+          "notes":"BF#BEG#C#"
+        },
+        {
+          "name":"dropC",
+          "notes":"CGCFAD"
+        },
+        {
+          "name":"dropC#",
+          "notes":"C#G#C#F#A#D#"
+        },
+        {
+          "name":"dropDb",
+          "notes":"DbAbDbGbBbEb"
+        },
+        {
+          "name":"dropD",
+          "notes":"DADGBE"
+        },
+        {
+          "name":"dropD#",
+          "notes":"D#A#D#F#CF"
+        },
+        {
+          "name":"dropEb",
+          "notes":"EbBbEbAbCF"
+        },
+        {
+          "name":"dropE",
+          "notes":"EBEAC#F#"
+        },
+        {
+          "name":"dropF",
+          "notes":"FCFA#D#GC"
+        },
+        {
+          "name":"dropF#",
+          "notes":"F#C#F#BD#G#"
+        },
+        {
+          "name":"dropGb",
+          "notes":"GbDbGbBEbAb"
+        },
+        {
+          "name":"dropG",
+          "notes":"GCGCEA"
+        },
+        {
+          "name":"dropG#",
+          "notes":"G#D#G#C#FA#"
+        },
+        {
+          "name":"lute",
+          "notes":"EADF#BE"
+        },
+        {
+          "name":"irish",
+          "notes":"DADGAD"
+        }
+
+      ]
+    },
+    {
+      "instrument": "mandolin",
+      "tunings": [
+        {
+          "name": "standard",
+          "notes": "GGDDAAEE"
+        }
+      ]
+    },
+    {
+      "instrument": "viola",
+      "tunings": [
+        {
+          "name": "standard",
+          "notes": "CGDA"
+        }
+      ]
+    },
+    {
+      "instrument":"violin",
+      "tunings":[
+        {
+        "name":"standard",
+        "notes":"GDAE"
+        },
+        {
+        "name":"cajun",
+        "notes":"FCGD"
+        },
+        {
+        "name":"sawmill",
+        "notes":"GDGD"
+        },
+        {
+        "name":"openD",
+        "notes":"DDAD"
+        },
+        {
+        "name":"openG",
+        "notes":"GDGB"
+        }
+      ]
+    },
+    {
+      "instrument":"ukulele",
+      "tunings":[
+        {
+        "name":"standard",
+        "notes":"GCEA"
+        },
+        {
+        "name":"bass",
+        "notes":"EADG"
+        },
+        {
+        "name":"baritone",
+        "notes":"DGBE"
+        },
+        {
+        "name":"tenor",
+        "notes":"GCEA"
+        },
+        {
+        "name":"soprano",
+        "notes":"ADF#B"
+        }
+      ]
     }
-  },
-  "ukulele": {
-    "standard": "GCEA",
-    "bass": "EADG",
-    "baritone": "DGBE",
-    "tenor": "GCEA",
-    "soprano": "ADF#B"
-  }
+  ]
 }

@@ -20,7 +20,7 @@ class TuningsCubit extends Cubit<TuningsState> {
     final String response = 
           await rootBundle.loadString('assets/tunings.json');
     final data = await json.decode(response);
-    emit(TuningsLoadedState(data:TuningsModel.fromJson(data)));
+    emit(TuningsLoadedState(data:TuningsModel.fromJson(data),selectedInstrument: 3));
     log(data.toString());
     } on Exception {
         emit(TuningsErrorState());
