@@ -1,4 +1,3 @@
-import "dart:developer";
 import "dart:ui";
 
 import "package:flutter/material.dart";
@@ -59,8 +58,8 @@ class _HomePageState extends State<HomePage> {
             decoration: const BoxDecoration(
                 gradient: RadialGradient(
                     colors: <Color>[
-                  Color.fromRGBO(10, 56, 100, 0.5),
-                  Color.fromRGBO(2, 25, 81, 0.6)
+                  Color.fromRGBO(3, 0, 28, 0.6),
+                  Color.fromRGBO(17, 20, 42, 0.723)
                 ],
                     // begin: Alignment.topCenter,
                     // end: Alignment.bottomCenter,
@@ -130,19 +129,19 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           ),
-          Positioned(
-            bottom: 700,
-            left: 340,
-            right: 100,
-            top: 10,
-            child: IconButton(
-              onPressed: () {
-                log('message');
+          // Positioned(
+          //   bottom: 700,
+          //   left: 340,
+          //   right: 100,
+          //   top: 10,
+          //   child: IconButton(
+          //     onPressed: () {
+          //       log('message');
 
-              },
-              icon: const Icon(Icons.menu, size: 30, color: Colors.white),
-            ),
-          )
+          //     },
+          //     icon: const Icon(Icons.menu, size: 30, color: Colors.white),
+          //   ),
+          // )
         ],
       ),
     );
@@ -361,7 +360,7 @@ class _HomePageState extends State<HomePage> {
                     (index) => Text(
                           state.data.data[selectedIntrumentIndex].tunings[selectedTuningIndex].notes[index],
                           style: const TextStyle(
-                              color: Colors.white, fontSize: 25),
+                              color: Colors.white, fontSize: 30),
                         ))
               ],
             ),
