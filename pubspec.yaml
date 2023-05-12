@@ -42,6 +42,7 @@ dependencies:
   flutter_audio_capture: ^1.1.4
   syncfusion_flutter_gauges: ^21.1.41
   rive: ^0.10.4
+  permission_handler: ^10.2.0
 
 dev_dependencies:
   flutter_test:

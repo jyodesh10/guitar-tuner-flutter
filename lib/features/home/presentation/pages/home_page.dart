@@ -7,6 +7,8 @@ import "package:syncfusion_flutter_gauges/gauges.dart";
 import "../bloc/home_bloc.dart";
 import "../bloc/tunings_cubit/tunings_cubit.dart";
 import "../utils/dialogs.dart";
+import 'package:permission_handler/permission_handler.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,6 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    recordPerm();
     BlocProvider.of<HomeBloc>(context).add(const StartRecordingEvent());
   }
 
@@ -35,6 +38,14 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
     BlocProvider.of<HomeBloc>(context).add(const StopRecordingEvent());
     HomeBloc().close();
+  }
+
+  recordPerm()async{
+    if (await Permission.microphone.request().isGranted) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text(
+        "Permission Granted"
+      )));
+    }
   }
 
   @override
