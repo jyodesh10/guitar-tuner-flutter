@@ -1,14 +1,17 @@
+// ignore_for_file: use_build_context_synchronously
+
 import "dart:ui";
 
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
+import "package:guitar_tuner/features/home/presentation/pages/metronome_page.dart";
 import "package:rive/rive.dart" as rv;
 import "package:syncfusion_flutter_gauges/gauges.dart";
+import 'package:permission_handler/permission_handler.dart';
+
 import "../bloc/home_bloc.dart";
 import "../bloc/tunings_cubit/tunings_cubit.dart";
 import "../utils/dialogs.dart";
-import 'package:permission_handler/permission_handler.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -42,9 +45,9 @@ class _HomePageState extends State<HomePage> {
 
   recordPerm()async{
     if (await Permission.microphone.request().isGranted) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text(
-        "Permission Granted"
-      )));
+      // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text(
+      //   "Permission Granted"
+      // )));
     }
   }
 
@@ -83,43 +86,63 @@ class _HomePageState extends State<HomePage> {
                 return Center(
                   child: Column(children: [
                     const Spacer(),
-                    Center(
-                      child: context.read<HomeBloc>().status ==
-                              "TuningStatus.undefined"
-                          ? const SizedBox(
-                              height: 80,
-                              width: 80,
-                            )
-                          : Container(
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
-                                  color: context.read<HomeBloc>().status ==
-                                          "TuningStatus.tuned"
-                                      ? Colors.green
-                                      : Colors.red.shade500,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        blurRadius: 10,
-                                        spreadRadius: 20,
-                                        color:
-                                            context.read<HomeBloc>().status ==
-                                                    "TuningStatus.tuned"
-                                                ? Colors.green
-                                                : Colors.red.shade500)
-                                  ]),
-                              child: Center(
-                                child: Text(
-                                  context.watch<HomeBloc>().note,
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      // context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green: Colors.red,
-                                      fontSize: 60.0,
-                                      fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const IconButton(
+                          onPressed: null,
+                          icon: Icon(Icons.menu, size: 30, color: Colors.transparent),
+                        ),
+                        const Spacer(),
+                        Center(
+                          child: context.read<HomeBloc>().status ==
+                                  "TuningStatus.undefined"
+                              ? const SizedBox(
+                                  height: 80,
+                                  width: 80,
+                                )
+                              : Container(
+                                  height: 80,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: context.read<HomeBloc>().status ==
+                                              "TuningStatus.tuned"
+                                          ? Colors.green.shade200
+                                          : Colors.red.shade200,
+                                      boxShadow: [
+                                        BoxShadow(
+                                            blurRadius: 10,
+                                            spreadRadius: 20,
+                                            color:
+                                                context.read<HomeBloc>().status ==
+                                                        "TuningStatus.tuned"
+                                                    ? Colors.green.shade200
+                                                    : Colors.red.shade200)
+                                      ]),
+                                  child: Center(
+                                    child: Text(
+                                      context.watch<HomeBloc>().note,
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          // context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green: Colors.red,
+                                          fontSize: 60.0,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                          onPressed: () {
+                            BlocProvider.of<HomeBloc>(context).add(const StopRecordingEvent());
+                            HomeBloc().close();
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const MetronomePage(), ) );
+                          },
+                          icon: Image.asset("assets/metronome.png",color: Colors.white, )
+                        ),
+                      ],
                     ),
                     const Spacer(),
                     _buildRadialGauge(),
@@ -169,17 +192,16 @@ class _HomePageState extends State<HomePage> {
                 showTicks: false,
                 minimum: 0,
                 maximum: 99,
+                
                 ranges: <GaugeRange>[
                   GaugeRange(
                     startValue: 0, endValue: 33,
                     // color: const Color(0xFFFE2A25),
                     label: 'Low',
                     gradient: const SweepGradient(colors: <Color>[
-                      Color.fromRGBO(85, 212, 229, 1),
-                      Color.fromRGBO(81, 163, 211, 1)
+                      Color(0xFFACB6E5)
                     ], stops: <double>[
-                      0.25,
-                      0.75
+                      0.25
                     ]),
                     sizeUnit: GaugeSizeUnit.factor,
                     labelStyle: const GaugeTextStyle(
@@ -193,8 +215,8 @@ class _HomePageState extends State<HomePage> {
                     // color:const Color(0xFFFFBA00),
                     label: 'Tuned',
                     gradient: const SweepGradient(colors: <Color>[
-                      Color.fromRGBO(81, 163, 211, 1),
-                      Color.fromRGBO(74, 102, 186, 1),
+                       Color(0xFFACB6E5),
+                      Color(0xFF74ebd5)
                     ], stops: <double>[
                       0.25,
                       0.75
@@ -211,10 +233,8 @@ class _HomePageState extends State<HomePage> {
                     // color:const Color(0xFF00AB47),
                     label: 'High',
                     gradient: const SweepGradient(colors: <Color>[
-                      Color.fromRGBO(74, 102, 186, 1),
-                      Color.fromRGBO(70, 60, 172, 1)
+                      Color(0xFF74ebd5)
                     ], stops: <double>[
-                      0.25,
                       0.75
                     ]),
                     labelStyle: const GaugeTextStyle(

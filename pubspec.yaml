@@ -43,6 +43,10 @@ dependencies:
   syncfusion_flutter_gauges: ^21.1.41
   rive: ^0.10.4
   permission_handler: ^10.2.0
+  metronome: ^0.0.1
+  audioplayers: ^4.1.0
+  reliable_interval_timer: ^1.0.1
+  sleek_circular_slider: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -88,6 +92,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/audio/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

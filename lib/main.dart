@@ -31,8 +31,11 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
           home: 
+          // const MetronomePage()
           const HomePage(),
           // const RiveBackground(),
         ));
   }
 }
+
+
