@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 import 'dart:ui';
 
@@ -5,7 +6,6 @@ import 'package:guitar_tuner/features/home/presentation/pages/home_page.dart';
 import "package:rive/rive.dart" as rv;
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:reliable_interval_timer/reliable_interval_timer.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 // number of milliseconds in a minute
@@ -31,52 +31,19 @@ class MetronomePage extends StatefulWidget {
 // this is made public so it is visible in the unit test
 // Note: there may be a better way to test private state
 class MetronomePageState extends State<MetronomePage> {
-  double _tempo = 80;
-
-  // Used to toggle metronome click
-  // It is set to be a public member,
-  // so it is visible in the unit test
-  bool soundEnabled = true;
-  bool paused = true;
-  bool _isElevated = false;
-
-
-  late ReliableIntervalTimer _timer;
-  // late AudioPlayer player;
+  final _isElevated = false;
   static AudioPlayer player = AudioPlayer();
+  AudioCache audioCache1  = AudioCache(prefix: 'assets/audio'); 
 
 
-  int _calculateTimerInterval(int tempo) {
-    double timerInterval = minute / tempo;
-
-    return timerInterval.round();
-  }
-
-  void onTimerTick(int elapsedMilliseconds) async {
-    if (soundEnabled) {
-      player.play(AssetSource(metronomeAudioPath));
-    }
-  }
-
-  ReliableIntervalTimer _scheduleTimer([int milliseconds = 10000]) {
-    return ReliableIntervalTimer(
-      interval: Duration(milliseconds: milliseconds),
-      callback: onTimerTick,
-    );
-  }
 
   @override
   void initState() {
     super.initState();
-
-    _timer = _scheduleTimer(_calculateTimerInterval(_tempo.round()));
-
-    // _timer.start();
   }
 
   @override
   void dispose() {
-    _timer.stop();
 
     super.dispose();
   }
@@ -117,49 +84,6 @@ class MetronomePageState extends State<MetronomePage> {
                 children: <Widget>[
                   customSlider(),
                   neumprhicBtn()
-
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  //   children: [
-                  //     // MaterialButton(
-                  //     //   onPressed: ()  async {
-                          
-                            
-                  //     //       _timer = _scheduleTimer(
-                  //     //         _calculateTimerInterval(_tempo.round()),
-                  //     //       );
-             
-                  //     //       if(paused){
-                  //     //         await _timer.start();
-                  //     //         paused=false;
-                  //     //         log(paused.toString());
-                  //     //       }else{
-                  //     //         await _timer.stop();
-                  //     //         paused=true;
-                  //     //         log(paused.toString());
-          
-                  //     //       }
-                  //     //     setState(() {
-                  //     //     });
-                  //     //   },
-                  //     //   shape: ,
-                  //     //   child: Icon(
-                  //     //     paused?
-                  //     //     Icons.play_arrow:
-                  //     //     Icons.pause,
-                  //     //   ),
-                  //     // ),
-                  //     // OutlinedButton(
-                  //     //   style: _buttonStyle,
-                  //     //   onPressed: () async {
-                  //     //     await _timer.stop();
-                  //     //   },
-                  //     //   child: const Icon(
-                  //     //     Icons.stop,
-                  //     //   ),
-                  //     // ),
-                  //   ],
-                  // )
                 ],
               ),
             ),
@@ -167,10 +91,16 @@ class MetronomePageState extends State<MetronomePage> {
           Positioned(
             top: 50,
             left: 10,
-            child: IconButton(
-              onPressed: ()=> Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const HomePage(), ) ), 
-              icon: const Icon(Icons.arrow_back_ios_new_rounded,color: Colors.white, )),
-          )
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: ()=> Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const HomePage(), ) ), 
+                  icon: const Icon(Icons.arrow_back_ios_new_rounded,color: Colors.white, )),
+                Center(child: Text("Metronome",style: Theme.of(context).textTheme.headlineMedium!.copyWith(color: Colors.white,fontWeight: FontWeight.w200 ), )),
+
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -197,9 +127,9 @@ class MetronomePageState extends State<MetronomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children:  [
             Text(
-              _tempo.round().toString(),
+              percentage.roundToDouble().ceil().toString(),
               style: const TextStyle(color: Colors.white, fontSize: 60,fontWeight: FontWeight.w200  ), 
             ),
             const Text(
@@ -209,36 +139,22 @@ class MetronomePageState extends State<MetronomePage> {
           ],
         ),
       ),
-      onChange: (double value)async {
-        await _timer.stop();
-
-        setState(() {
-          _tempo = value;
-        });
-    });
+      onChange: (double value) {
+        log(value.toStringAsFixed(0));
+      }
+    );
   }
 
   neumprhicBtn(){
     return Center(
         child: GestureDetector(
-          onTap: ()async {
-              _timer = _scheduleTimer(
-                _calculateTimerInterval(_tempo.round()),
-              );
+          onTap: () {
+            Timer.periodic(const Duration(seconds: 1), (timer) {
+          player.play(AssetSource(metronomeAudioPath));
 
-              if(_isElevated){
-                await _timer.start();
-                _isElevated=false;
-                log(_isElevated.toString());
-              }else{
-                await _timer.stop();
-                _isElevated=true;
-                log(_isElevated.toString());
+             });
 
-              }
-            setState(() {
-              _isElevated = !_isElevated;
-            });
+  
           },
           child: AnimatedContainer(
             duration: const Duration(
