@@ -3,6 +3,7 @@
 Guitar Tuner And Metronome
 
 OnTune is a powerful and user-friendly app designed to elevate your music practice. It combines a high-precision guitar tuner with a versatile metronome, offering everything you need to stay in tune and on time.
+![My Image](screenshots/mockup.png)
 
 ## Tuner
 
@@ -25,7 +26,6 @@ Clean and intuitive interface: Easy to navigate and use, even for beginners.
 Customizable settings: Tailor the app to your preferences with various options for sound, display, and more.
 Compact and portable: Practice anywhere with the app's convenient size.
 
-![My Image](screenshots/mockup.png)
 
 ## Screenshots
 Tuner             |  Metronome
