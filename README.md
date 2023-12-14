@@ -2,6 +2,8 @@
 
 Guitar Tuner And Metronome
 
+![My Image](screenshots/mockup.png)
+
 ## Screenshots
 Tuner             |  Metronome
 :-------------------------:|:-------------------------:
