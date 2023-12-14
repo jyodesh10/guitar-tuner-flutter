@@ -4,7 +4,7 @@ Guitar Tuner And Metronome
 
 OnTune is a powerful and user-friendly app designed to elevate your music practice. It combines a high-precision guitar tuner with a versatile metronome, offering everything you need to stay in tune and on time.
 
-##Tuner
+## Tuner
 
 Chromatic tuning: Accurately tune any stringed instrument, including guitars, basses, ukuleles, violins, and more.
 Multiple tuning presets: Choose from popular tunings or create your own.
@@ -12,7 +12,7 @@ Visual tuning guide: See your pitch in real-time with a clear and easy-to-read d
 Built-in microphone: No need for external cables, tune directly from your phone.
 Adjustable calibration: Fine-tune the tuner to match your instrument and A4 reference pitch.
 
-##Metronome
+## Metronome
 
 Wide range of tempos: Practice at any pace from 30 to 300 beats per minute.
 Variable time signatures: Choose from common time signatures like 4/4, 3/4, and more, or create custom rhythms.
