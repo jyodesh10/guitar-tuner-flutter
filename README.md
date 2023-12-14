@@ -1,4 +1,4 @@
-# guitar_tuner
+# OnTune
 
 Guitar Tuner And Metronome
 
